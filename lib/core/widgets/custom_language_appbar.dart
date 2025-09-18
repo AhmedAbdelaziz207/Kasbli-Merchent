@@ -1,0 +1,31 @@
+import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../theme/app_colors.dart';
+import 'package:kasbli_merchant/core/utils/app_keys.dart';
+import 'package:kasbli_merchant/core/utils/storage_service.dart';
+import 'package:kasbli_merchant/core/network/dio_factory.dart';
+
+part 'language_switcher.dart';
+
+class CustomLanguageAppBar extends StatelessWidget
+    implements PreferredSizeWidget {
+  const CustomLanguageAppBar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      actions: const [
+        Padding(
+          padding: EdgeInsetsDirectional.only(end: 10.0),
+          child: LanguageSwitcher(),
+        ),
+      ],
+    );
+  }
+
+  @override
+  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+}

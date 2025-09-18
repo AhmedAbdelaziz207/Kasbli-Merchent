@@ -1,0 +1,77 @@
+/*
+ "id": 2,
+        "name": "ahmed elawady",
+        "phone": "01276876907",
+        "second_phone": "01276876908",
+        "gender": "male",
+        "store_name": "Rixox",
+        "date_of_birth": "2002-06-24",
+        "fcm": "g3rg3g35y35y211",
+        "wallet": null,
+        "token": "3|o00MkYJcXwqPlqDmIj3XBhzT2bjKt8U2xREAWhqjdffb3f0a"
+ */
+class LoginResponse {
+  int status;
+  String message;
+  LoginData? data;
+
+  LoginResponse({required this.status, required this.message});
+
+  LoginResponse.empty() : this(status: 0, message: '');
+}
+
+class LoginData {
+  final int id;
+  final String phone;
+
+  final String secondPhone;
+
+  final String? wallet;
+
+  final String dateOfBirth;
+  final String storeName;
+  final String? token;
+
+  LoginData({
+    required this.token,
+    required this.id,
+    required this.phone,
+    required this.secondPhone,
+    required this.wallet,
+    required this.dateOfBirth,
+    required this.storeName,
+  });
+
+  LoginData.empty()
+    : this(
+        token: '',
+        id: 0,
+        phone: '',
+        secondPhone: '',
+        wallet: '',
+        dateOfBirth: '',
+        storeName: '',
+      );
+
+  factory LoginData.fromJson(Map<String, dynamic> json) {
+    return LoginData(
+      token: json['token'] ?? '',
+      id: json['id'] ?? 0,
+      phone: json['phone'] ?? '',
+      secondPhone: json['second_phone'] ?? '',
+      wallet: json['wallet'] ?? '',
+      dateOfBirth: json['date_of_birth'] ?? '',
+      storeName: json['store_name'] ?? '',
+    );
+  }
+
+  Map<String, dynamic> toJson() => {
+    'token': token,
+    'id': id,
+    'phone': phone,
+    'second_phone': secondPhone,
+    'wallet': wallet,
+    'date_of_birth': dateOfBirth,
+    'store_name': storeName,
+  };
+}
