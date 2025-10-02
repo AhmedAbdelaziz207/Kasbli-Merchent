@@ -3,8 +3,6 @@ import 'package:kasbli_merchant/features/cart/model/cart_calculation_response.da
 import 'package:kasbli_merchant/features/cart/model/cart_response.dart';
 import 'package:kasbli_merchant/features/cart/model/request_order_response.dart';
 import 'package:kasbli_merchant/features/categories/model/category_model.dart';
-import 'package:kasbli_merchant/features/home/model/banner_model.dart';
-import 'package:kasbli_merchant/features/home/model/sections_response.dart';
 import 'package:kasbli_merchant/features/login/model/login_response.dart';
 import 'package:kasbli_merchant/features/notifications/model/notifications_count_response.dart';
 import 'package:kasbli_merchant/features/notifications/model/notifications_respons.dart';
@@ -55,14 +53,8 @@ abstract class ApiService {
   @POST(ApiEndPoints.submitResetPassword)
   Future<void> submitResetPassword(@Body() Map<String, dynamic> data);
 
-  @GET(ApiEndPoints.banners)
-  Future<BannersResponse> getBanners();
-
   @GET(ApiEndPoints.categoriesWithSub)
   Future<CategoriesResponse> getCategoriesWithSubCategories();
-
-  @GET(ApiEndPoints.sections)
-  Future<SectionsResponse> getSections();
 
   @GET(ApiEndPoints.allProducts)
   Future<ProductsResponse> getAllProducts({

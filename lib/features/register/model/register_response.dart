@@ -33,6 +33,11 @@ class RegisterData {
   final String? dateOfBirth;
   final String ?fcm;
   final int id;
+  final String? lat;
+  final String? long;
+  final String? address;
+  @JsonKey(name: "confirmed_otp")
+  final bool? confirmedOtp;
 
   RegisterData({
     this.name,
@@ -43,6 +48,10 @@ class RegisterData {
     this.dateOfBirth,
     this.fcm,
     required this.id,
+    this.lat,
+    this.long,
+    this.address,
+    this.confirmedOtp,
   });
 
   factory RegisterData.fromJson(Map<String, dynamic> json) =>

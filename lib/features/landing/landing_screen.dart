@@ -4,6 +4,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kasbli_merchant/core/utils/app_keys.dart';
+import 'package:kasbli_merchant/features/home/home_screen.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/utils/app_assets.dart';
 
@@ -18,8 +19,8 @@ class _LandingScreenState extends State<LandingScreen> {
   int _currentIndex = 0;
   final NotchBottomBarController notchBottomBarController =
       NotchBottomBarController(index: 0);
-  final screens = const [
-    Center(child: Text('Home (coming soon)')),
+  final screens = [
+    HomeScreen(),
     Center(child: Text('Favorites (coming soon)')),
     Center(child: Text('Orders (coming soon)')),
     Center(child: Text('Profile (coming soon)')),
@@ -58,14 +59,14 @@ class _LandingScreenState extends State<LandingScreen> {
             activeItem: Image.asset(AppAssets.home),
           ),
           BottomBarItem(
-            itemLabel: tr(AppKeys.favoritesNav),
-            inActiveItem: Image.asset(AppAssets.fav),
-            activeItem: Image.asset(AppAssets.fav, color: AppColors.white),
+            itemLabel: tr(AppKeys.products),
+            inActiveItem: Image.asset(AppAssets.productsInactive),
+            activeItem: Image.asset(AppAssets.productsInactive, color: AppColors.white),
           ),
           BottomBarItem(
-            itemLabel: tr(AppKeys.ordersNav),
-            inActiveItem: Image.asset(AppAssets.orders, color: Colors.grey),
-            activeItem: Image.asset(AppAssets.orders, color: AppColors.white),
+            itemLabel: tr(AppKeys.requests),
+            inActiveItem: Image.asset(AppAssets.requestsInactive),
+            activeItem: Image.asset(AppAssets.requestsInactive, color: AppColors.white),
           ),
           BottomBarItem(
             itemLabel: tr(AppKeys.profileNav),

@@ -71,7 +71,7 @@ class _CustomIntlPhoneFieldState extends State<CustomIntlPhoneField> {
           controller: widget.controller,
           initialCountryCode: 'EG',
           showCountryFlag: false,
-          showDropdownIcon: false,
+          showDropdownIcon: true,
           buildCounter:
               (
                 context, {
@@ -83,7 +83,7 @@ class _CustomIntlPhoneFieldState extends State<CustomIntlPhoneField> {
           validator: widget.validator,
           focusNode: _focusNode,
           onCountryChanged: widget.onCountryChanged,
-        
+    
           dropdownIconPosition: IconPosition.trailing,
           decoration: InputDecoration(
             enabledBorder: OutlineInputBorder(

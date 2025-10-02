@@ -29,6 +29,10 @@ RegisterData _$RegisterDataFromJson(Map<String, dynamic> json) => RegisterData(
   dateOfBirth: json['date_of_birth'] as String?,
   fcm: json['fcm'] as String?,
   id: (json['id'] as num).toInt(),
+  lat: json['lat'] as String?,
+  long: json['long'] as String?,
+  address: json['address'] as String?,
+  confirmedOtp: json['confirmed_otp'] as bool?,
 );
 
 Map<String, dynamic> _$RegisterDataToJson(RegisterData instance) =>
@@ -41,4 +45,8 @@ Map<String, dynamic> _$RegisterDataToJson(RegisterData instance) =>
       'date_of_birth': instance.dateOfBirth,
       'fcm': instance.fcm,
       'id': instance.id,
+      'lat': instance.lat,
+      'long': instance.long,
+      'address': instance.address,
+      'confirmed_otp': instance.confirmedOtp,
     };

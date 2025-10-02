@@ -9,7 +9,6 @@ import 'package:kasbli_merchant/core/widgets/custom_snackbar.dart';
 import 'package:kasbli_merchant/core/widgets/primary_button.dart';
 import 'package:kasbli_merchant/features/otp/widgets/otp_counter.dart';
 import 'package:kasbli_merchant/features/otp/logic/otp_cubit.dart';
-import 'package:kasbli_merchant/features/register/logic/register_cubit.dart';
 import 'package:kasbli_merchant/features/forgot_password/logic/forgot_password_cubit.dart';
 import 'package:kasbli_merchant/features/forgot_password/logic/forgot_password_state.dart';
 import 'package:kasbli_merchant/core/routing/app_router.dart';
@@ -56,7 +55,6 @@ class _OtpScreenState extends State<OtpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final registerCubit = context.read<RegisterCubit>();
     final args =
         ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>? ??
         {};
@@ -76,7 +74,6 @@ class _OtpScreenState extends State<OtpScreen> {
       }
       return v;
     }
-
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -119,8 +116,9 @@ class _OtpScreenState extends State<OtpScreen> {
                         }
                         if (state is OtpVerified) {
                           // Continue registration using verified code
-                          registerCubit.registerWithOtpAndCreateAccount(
-                            state.code,
+                          Navigator.pushReplacementNamed(
+                            context,
+                            AppRouter.done,
                           );
                         }
                       },
@@ -136,7 +134,8 @@ class _OtpScreenState extends State<OtpScreen> {
                           );
                         }
                         if (state is ForgotPasswordVerified) {
-                          final forgotCubit = context.read<ForgotPasswordCubit>();
+                          final forgotCubit =
+                              context.read<ForgotPasswordCubit>();
                           Navigator.pushReplacementNamed(
                             context,
                             AppRouter.createNewPassword,
@@ -148,21 +147,6 @@ class _OtpScreenState extends State<OtpScreen> {
                         }
                       },
                     ),
-                  BlocListener<RegisterCubit, RegisterState>(
-                    listener: (context, state) {
-                      if (state is RegisterFailure) {
-                        CustomSnackBar.show(
-                          context,
-                          message: state.message,
-                          type: SnackBarType.error,
-                        );
-                      }
-
-                      if (state is RegisterSuccess) {
-                        Navigator.pushReplacementNamed(context, AppRouter.done);
-                      }
-                    },
-                  ),
                 ],
                 child: Pinput(
                   length: 6,
@@ -222,7 +206,8 @@ class _OtpScreenState extends State<OtpScreen> {
               if (!widget.isForgotPassword)
                 BlocBuilder<OtpCubit, OtpState>(
                   builder: (context, state) {
-                    final loading = state is OtpSending || state is OtpVerifying;
+                    final loading =
+                        state is OtpSending || state is OtpVerifying;
                     return PrimaryButton(
                       text: AppKeys.submit.tr(),
                       onPressed: () {
@@ -285,4 +270,3 @@ class _OtpScreenState extends State<OtpScreen> {
     );
   }
 }
-

@@ -6,7 +6,7 @@
     "onboarding_desc_2": "Promotion is important to increase your sales and reach customers quickly.",
     "onboarding_title_3": "After-sales services",
     "onboarding_desc_3": "Hobby Products Warranty Return Policy, Direct Profit Transfer and 16-Hour Merchant Services",
-    "welcomeBack": "Welcome Back To",
+    "welcomeBack": "Welcome Back To ",
     "phoneNumber": "Phone Number",
     "login": "Login",
     "password": "Password",
@@ -228,5 +228,17 @@
     "finalPriceDetails": "Final price ${totalPaid} for ${productCount} product(s)",
     "viewDetails": "View details",
     "profitOnTheWay": "Your ${profit} profit is on its way to you",
-    "goToShop": "Go to shop"
+    "goToShop": "Go to shop",
+    "welcomeTo": "Welcome to ",
+    "locationInfo": "Location Info",
+    "address": "Address",
+    "typeYourAddress": "Type your address",
+    "addressRequired": "Address is required",
+    "selectDeliveryLocationTitle": "Select Delivery Location",
+    "deliveryLocationMarkerTitle": "Delivery Location",
+    "deliveryLocationMarkerSnippet": "Drag to move this marker",
+    "mapInstructionSelectDelivery": "Tap on map or drag the marker to select delivery location",
+    "confirmDeliveryLocation": "Confirm Delivery Location",
+    "storeLocationMarkerTitle": "Store Location",
+    "storeLocationMarkerSnippet": "Tap to select or drag to move"
 }

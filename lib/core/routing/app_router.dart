@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kasbli_merchant/features/otp/logic/otp_cubit.dart';
 
 import '../../features/done/done_screen.dart';
 import '../../features/forgot_password/ui/create_new_password_screen.dart';
@@ -84,6 +85,7 @@ class AppRouter {
                     )
                   else
                     BlocProvider(create: (_) => RegisterCubit()),
+                  BlocProvider(create: (_) => OtpCubit()),
                 ],
                 child: OtpScreen(
                   phoneNumber: args['phoneNumber'] ?? '',
@@ -105,14 +107,7 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => DoneScreen());
 
       case landing:
-        return MaterialPageRoute(
-          builder:
-              (_) => MultiBlocProvider(
-                providers: [
-                ],
-                child: LandingScreen(),
-              ),
-        );
+        return MaterialPageRoute(builder: (_) => LandingScreen());
 
       default:
         return MaterialPageRoute(

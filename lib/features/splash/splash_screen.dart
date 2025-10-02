@@ -1,10 +1,10 @@
-﻿import 'package:flutter/material.dart';
+﻿import 'dart:developer';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kasbli_merchant/core/network/dio_factory.dart';
 import 'package:kasbli_merchant/core/routing/app_router.dart';
 import 'package:kasbli_merchant/core/utils/app_assets.dart';
 import 'package:kasbli_merchant/core/utils/storage_service.dart';
-
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -36,17 +36,25 @@ class _SplashScreenState extends State<SplashScreen>
 
   Future<void> _checkAuthStatus() async {
     final storage = StorageService();
+    final bool? firstTime = storage.get(StorageService.keyFirstTime);
     final isLoggedIn = storage.getBool(StorageService.keyUserLoggedIn);
 
     if (!mounted) return;
 
     Future.delayed(const Duration(seconds: 2), () {
       DioFactory.addDioHeaders();
+      log("firstTime $firstTime");
       if (isLoggedIn) {
         if (mounted) Navigator.pushReplacementNamed(context, AppRouter.landing);
       } else {
-        if (mounted) {
-          Navigator.pushReplacementNamed(context, AppRouter.onboarding);
+        if (firstTime == false) {
+          if (mounted) {
+            Navigator.pushReplacementNamed(context, AppRouter.landing);
+          }
+        } else {
+          if (mounted) {
+            Navigator.pushReplacementNamed(context, AppRouter.onboarding);
+          }
         }
       }
     });
@@ -71,4 +79,3 @@ class _SplashScreenState extends State<SplashScreen>
     );
   }
 }
-

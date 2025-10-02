@@ -15,6 +15,9 @@ class AppAssets {
   static const home = "assets/icons/home.png";
   static const homeInactive = "assets/icons/home_inactive.png";
   static const fav = "assets/icons/fav.png";
+  static const productsInactive = "assets/icons/products_inactive.png";
+  static const requestsInactive = "assets/icons/requests_inactive.png";
+  static const products = "assets/icons/products.png";
   static const orders = "assets/icons/orders.png";
   static const profile = "assets/icons/profile.png";
   static const invoice = "assets/images/invoice.png";
@@ -27,5 +30,11 @@ class AppAssets {
   static const emptyFav = "assets/images/empty_fav.png";
   static const rank = "assets/icons/rank.png";
   static const filter = "assets/icons/filter.png";
+  static const totalOrders = "assets/icons/total_orders.png";
+  static const ordersCompleted = "assets/icons/orders_completed.png";
+  static const ordersPending = "assets/icons/orders_pending.png";
+  static const ordersPrepared = "assets/icons/orders_prepared.png";
+  static const ordersReturned = "assets/icons/orders_returned.png";
+  static const ordersCanceled = "assets/icons/orders_canceled.png";
 
 }

@@ -24,10 +24,12 @@ class RegisterCubit extends Cubit<RegisterState> {
   final TextEditingController confirmPasswordController =
       TextEditingController();
   final TextEditingController storeNameController = TextEditingController();
-
+  final TextEditingController addressController = TextEditingController();
   // Gender & Date of Birth
   String? _genderLabel; // localized label from UI
   DateTime? _dateOfBirth;
+  String? _lat;
+  String? _long;
   String countryCode = "20";
   String secondCountryCode = "20";
   // Dependencies
@@ -37,6 +39,10 @@ class RegisterCubit extends Cubit<RegisterState> {
   String? get genderLabel => _genderLabel;
 
   DateTime? get dateOfBirth => _dateOfBirth;
+
+  set lat(String value) => _lat = value;
+
+  set long(String value) => _long = value;
 
   void updateGender(String? value) {
     _genderLabel = value;
@@ -60,44 +66,21 @@ class RegisterCubit extends Cubit<RegisterState> {
     return true;
   }
 
-  // Check if phone numbers are unique
-  Future<void> checkUniquePhones() async {
+    
+  // Called by UI after OTP verification to finish registration
+  Future<void> registerWithOtpAndCreateAccount() async {
     if (!validateForm()) return;
 
-    emit(const RegisterLoading('Checking phone numbers...'));
-
-    try {
-      final response = await _apiService.checkPhonesUniques({
-        'phone': "+" + countryCode + phoneController.text.trim(),
-        if (secondPhoneController.text.trim().isNotEmpty)
-          'second_phone':
-              "+" + secondCountryCode + secondPhoneController.text.trim(),
-        if (secondPhoneController.text.trim().isEmpty) 'second_phone': " ",
-      });
-
-      if (response.status == 200) {
-        // Phones are unique -> let UI navigate to OTP screen; OTP sending handled by OtpCubit
-        emit(const RegisterOTPSent());
-      } else {
-        emit(RegisterFailure(response.msg));
-      }
-    } catch (e) {
-      emit(RegisterFailure(ApiErrorModel.getErrorMessage(e)));
-    }
-  }
-
-  // Called by UI after OTP verification to finish registration
-  Future<void> registerWithOtpAndCreateAccount(String otp) async {
-    await _registerUser(otp: otp);
+    await _registerUser();
   }
 
   // Register user after OTP verification
-  Future<void> _registerUser({required String otp}) async {
+  Future<void> _registerUser() async {
     try {
       emit(const RegisterLoading('Creating your account...'));
 
       final String normalizedGender = _normalizeGender(_genderLabel);
-      final String dobString = _formatDob(_dateOfBirth);
+      final String dobString = _formatDateOfBirth(_dateOfBirth);
 
       final req = RegisterRequest(
         name: nameController.text.trim(),
@@ -111,9 +94,11 @@ class RegisterCubit extends Cubit<RegisterState> {
         storeName: storeNameController.text.trim(),
         password: passwordController.text.trim(),
         passwordConfirmation: confirmPasswordController.text.trim(),
-        otp: otp,
+        lat: _lat ?? "",
+        long: _long ?? "",
+        address: addressController.text.trim(),
         fcm:
-            await NotificationService().getFCMToken() ??
+            // await NotificationService().getFCMToken() ??
             "", // FCM token can be added later
       );
 
@@ -137,7 +122,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     return label; // fallback to whatever is provided
   }
 
-  String _formatDob(DateTime? date) {
+  String _formatDateOfBirth(DateTime? date) {
     if (date == null) return '';
     // Format as yyyy-MM-dd for API consistency
     final y = date.year.toString().padLeft(4, '0');
@@ -153,6 +138,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     passwordController.dispose();
     confirmPasswordController.dispose();
     storeNameController.dispose();
+    addressController.dispose();
+    formKey.currentState?.dispose();
   }
 }
-

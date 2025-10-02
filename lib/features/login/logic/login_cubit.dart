@@ -13,7 +13,13 @@ import '../model/login_request.dart';
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
-  LoginCubit() : super(LoginInitial());
+  LoginCubit() : super(LoginInitial()) {
+    // Set first time to false to skip onboarding even user not logged in
+    storage.save(StorageService.keyFirstTime, false);
+    log("first time ${storage.get(StorageService.keyFirstTime)}");
+  }
+
+  
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   TextEditingController phoneController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -66,7 +72,6 @@ class LoginCubit extends Cubit<LoginState> {
     }
   }
 
-
   Future<void> saveUserData(LoginData data) async {
     await storage.save(StorageService.keyUserId, data.id.toString());
     await storage.save(StorageService.keyUserName, data.name ?? '');
@@ -78,7 +83,6 @@ class LoginCubit extends Cubit<LoginState> {
     await storage.save(StorageService.keyUserLoggedIn, true);
     await storage.saveSecure(StorageService.keyUserToken, data.token ?? '');
 
-
     log("name ${data.name}");
     log("phone ${data.phone}");
     log("secondPhone ${data.secondPhone}");
@@ -86,13 +90,11 @@ class LoginCubit extends Cubit<LoginState> {
     log("storeName ${data.storeName}");
     log("gender ${data.gender}");
     log("id ${data.id}");
-  
   }
 
   dispose() {
     phoneController.dispose();
     passwordController.dispose();
-  }
   
+  }
 }
-

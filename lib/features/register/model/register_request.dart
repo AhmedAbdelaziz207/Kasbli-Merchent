@@ -28,11 +28,17 @@ class RegisterRequest {
   @JsonKey(name: 'password_confirmation')
   final String passwordConfirmation;
 
-  @JsonKey(name: 'otp')
-  final String otp;
-
   @JsonKey(name: 'fcm')
   final String fcm;
+
+  @JsonKey(name: 'lat')
+  final String lat;
+
+  @JsonKey(name: 'long')
+  final String long;
+
+  @JsonKey(name: 'address')
+  final String address;
 
   RegisterRequest({
     required this.name,
@@ -43,8 +49,10 @@ class RegisterRequest {
     required this.storeName,
     required this.password,
     required this.passwordConfirmation,
-    required this.otp,
     required this.fcm,
+    required this.lat,
+    required this.long,
+    required this.address,
   });
 
   factory RegisterRequest.fromJson(Map<String, dynamic> json) =>

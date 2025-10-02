@@ -6,7 +6,7 @@
     "onboarding_desc_2": "الترويج مهم لزيادة مبيعاتك والوصول للعملاء بسرعة.",
     "onboarding_title_3": "خدمات ما بعد البيع",
     "onboarding_desc_3": "ضمان منتجات الهوايات، سياسة الإرجاع، تحويل الأرباح مباشرة وخدمات للتجار لمدة 16 ساعة",
-    "welcomeBack": "مرحبا بك في ",
+    "welcomeBack": " مرحبا بك في ",
     "phoneNumber": "رقم الهاتف",
     "login": "تسجيل الدخول",
     "password": "كلمة المرور",
@@ -226,5 +226,17 @@
     "finalPriceDetails": "السعر النهائي ${totalPaid} لـ ${productCount} منتج (منتجات)",
     "viewDetails": "عرض التفاصيل",
     "profitOnTheWay": "ربحك ${profit} في طريقه إليك",
-    "goToShop": "اذهب للتسوق"
+    "goToShop": "اذهب للتسوق",
+    "welcomeTo": " مرحبا بك في ",
+    "locationInfo": "معلومات الموقع",
+    "address": "العنوان",
+    "typeYourAddress": "اكتب عنوانك",
+    "addressRequired": "العنوان مطلوب",
+    "selectDeliveryLocationTitle": "اختر موقع التوصيل",
+    "deliveryLocationMarkerTitle": "موقع التوصيل",
+    "deliveryLocationMarkerSnippet": "اسحب لنقل هذا المؤشر",
+    "mapInstructionSelectDelivery": "اضغط على الخريطة أو اسحب المؤشر لاختيار موقع التوصيل",
+    "confirmDeliveryLocation": "تأكيد موقع التوصيل",
+    "storeLocationMarkerTitle": "موقع المتجر",
+    "storeLocationMarkerSnippet": "اضغط للاختيار أو اسحب للتحريك"
 }

@@ -3,13 +3,13 @@ class ApiEndPoints {
   ApiEndPoints._();
   static const baseUrl = "https://kasbli.msarweb.net/";
   //Auth Endpoints
-  static const login = "api/auth/login";
-  static const register = "api/auth/register";
-  static const checkPhonesUniques = "api/auth/check-phones-unique";
-  static const verifyResetPassword = "api/auth/verify_reset_password";
-  static const requestPassword = "api/auth/request_reset_password";
-  static const submitResetPassword = "api/auth/submit_new_password";
-  static const logout = "api/logout";
+  static const login = "api/auth/vendor/login";
+  static const register = "api/auth/vendor/register";
+  static const checkPhonesUniques = "api/auth/vendor/check-phones-unique";
+  static const verifyResetPassword = "api/auth/vendor/verify_reset_password";
+  static const requestPassword = "api/auth/vendor/request_reset_password";
+  static const submitResetPassword = "api/auth/vendor/submit_new_password";
+  static const logout = "api/auth/vendor/logout";
   static const categoriesWithSub =
       "api/application/kasbli/get-categories-with-sub";
   static const banners = "api/application/kasbli/get-banners";

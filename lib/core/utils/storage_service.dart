@@ -181,4 +181,6 @@ class StorageService {
   static const String keyUserGender = 'user_gender';
 
   static const String secondPhone = 'second_phone';
+
+  static String keyFirstTime = 'first_time';
 }

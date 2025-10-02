@@ -6,7 +6,7 @@ class AppKeys {
   static const onboardingDesc2 = 'onboarding_desc_2';
   static const onboardingTitle3 = 'onboarding_title_3';
   static const onboardingDesc3 = 'onboarding_desc_3';
-  
+
   // Authentication
   static const welcomeBack = "welcomeBack";
   static const phoneNumber = "phoneNumber";
@@ -39,7 +39,7 @@ class AppKeys {
   static const createNewPassword = "createNewPassword";
   static const confirmNewPassword = "confirmNewPassword";
   static const confirm = "confirm";
-  
+
   // Orders
   static const orders = "orders";
   static const requests = "requests";
@@ -70,13 +70,13 @@ class AppKeys {
   static const noProducts = "noProducts";
   static const orderDetails = "orderDetails";
   static const noProductDetails = "noProductDetails";
-  
+
   // Search
   static const searchHint = "searchHint";
   static const recentSearches = "recentSearches";
   static const noRecentSearches = "noRecentSearches";
   static const howCanWeHelpYou = "howCanWeHelpYou";
-  
+
   // Profile
   static const myProfile = "myProfile";
   static const editProfile = "editProfile";
@@ -99,7 +99,7 @@ class AppKeys {
   static const upcomingProfits = "upcomingProfits";
   static const userStoreName = "userStoreName";
   static const clotheStore = "clotheStore";
-  
+
   // Product
   static const addToCart = "addToCart";
   static const downloadMedia = "downloadMedia";
@@ -118,7 +118,7 @@ class AppKeys {
   static const imageDownloadFailed = 'imageDownloadFailed';
   static const customerSuggestedPrice = 'customerSuggestedPrice';
   static const productAddedToCartSuccess = 'productAddedToCartSuccess';
-  
+
   // Order Summary
   static const orderSummary = "orderSummary";
   static const paymentMethod = "paymentMethod";
@@ -129,13 +129,13 @@ class AppKeys {
   static const notesToCustomer = "notesToCustomer";
   static const notesToKasbliHint = "notesToKasbliHint";
   static const notesToCustomerHint = "notesToCustomerHint";
-  
+
   // Price Details
   static const discount = "discount";
   static const addDiscountCode = "addDiscountCode";
   static const apply = "apply";
   static const notesHint = "notesHint";
-  
+
   // Currency
   static const currencySymbol = 'currencySymbol';
 
@@ -144,14 +144,14 @@ class AppKeys {
   static const selectLanguage = "selectLanguage";
   static const english = "english";
   static const arabic = "arabic";
-  
+
   // Bottom Navigation
   static const homeNav = "home";
   static const favoritesNav = "favorites";
   static const noFavoritesYet = "noFavoritesYet";
   static const ordersNav = "orders";
   static const profileNav = "profile";
-  
+
   // Common
   static const error = "error";
   static const yes = 'yes';
@@ -215,20 +215,20 @@ class AppKeys {
 
   static var fillAllFields = 'fillAllFields';
   static const priceDetails = 'priceDetails';
-  
+
   // Price Summary Footer
   static const totalWholesalePriceLabel = 'totalWholesalePriceLabel';
   static const profitLabel = 'profitLabel';
   static const totalCustomerPriceLabel = 'totalCustomerPriceLabel';
   static const deliveryCostLabel = 'deliveryCostLabel';
   static const totalOrderLabel = 'totalOrderLabel';
-  
+
   // Payment Method
   static const paymentUponReceipt = 'paymentUponReceipt';
-  
+
   // Delivery Cost Slider
   static const payDeliveryCostFromProfit = 'payDeliveryCostFromProfit';
-  
+
   // Terms & consent
   static const iHaveReadAndAgree = 'iHaveReadAndAgree';
   static const termsOfUseServices = 'termsOfUseServices';
@@ -286,4 +286,19 @@ class AppKeys {
   static const viewDetails = 'viewDetails';
   static const profitOnTheWay = 'profitOnTheWay';
   static const goToShop = 'goToShop';
+
+  static var welcomeTo = 'welcomeTo';
+
+  // Maps / Location
+  static const locationInfo = 'locationInfo';
+  static const address = 'address';
+  static const typeYourAddress = 'typeYourAddress';
+  static const addressRequired = 'addressRequired';
+  static const selectDeliveryLocationTitle = 'selectDeliveryLocationTitle';
+  static const deliveryLocationMarkerTitle = 'deliveryLocationMarkerTitle';
+  static const deliveryLocationMarkerSnippet = 'deliveryLocationMarkerSnippet';
+  static const mapInstructionSelectDelivery = 'mapInstructionSelectDelivery';
+  static const confirmDeliveryLocation = 'confirmDeliveryLocation';
+  static const storeLocationMarkerTitle = 'storeLocationMarkerTitle';
+  static const storeLocationMarkerSnippet = 'storeLocationMarkerSnippet';
 }
