@@ -67,8 +67,8 @@ class CustomTextField extends StatelessWidget {
           Text(
             labelText!,
             style: TextStyle(
-              fontSize: 12.sp,
-              fontWeight: FontWeight.w500,
+              fontSize: 14.sp,
+              fontWeight: FontWeight.bold,
               color: Colors.grey[800],
             ),
           ),
@@ -77,6 +77,7 @@ class CustomTextField extends StatelessWidget {
         SizedBox(
           height: constrainHeight ? height : null,
           child: TextFormField(
+
             controller: controller,
             onTapOutside: (event) {
               FocusScope.of(context).unfocus();
@@ -97,31 +98,32 @@ class CustomTextField extends StatelessWidget {
             textCapitalization: textCapitalization,
             autovalidateMode: autoValidateMode,
             autofocus: autofocus,
-            style: TextStyle(fontSize: 12.sp),
+            style: TextStyle(fontSize: 11.sp),
             decoration: InputDecoration(
               hintText: hintText,
               hintStyle: const TextStyle(
                 color: Colors.grey, // Adjust if needed
-                fontSize: 16.0,
+                fontSize: 12.0,
               ),
               prefixIcon: prefixIcon,
+              suffixIcon: suffixIcon,
               filled: true,
               fillColor: AppColors.greyLightActive.withOpacity(.3),
               // Light gray background
               contentPadding: const EdgeInsets.symmetric(
-                vertical: 0.0,
-                horizontal: 0.0,
+                vertical: 12,
+                horizontal: 12,
               ),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(30), // Pill shape
+                borderRadius: BorderRadius.circular(18), // Pill shape
                 borderSide: BorderSide.none, // No border
               ),
               enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(30),
+                borderRadius: BorderRadius.circular(18),
                 borderSide: BorderSide.none,
               ),
               focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(30),
+                borderRadius: BorderRadius.circular(18),
                 borderSide: BorderSide.none,
               ),
             ),

@@ -1,6 +1,6 @@
+import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:kasbli_merchant/core/network/api_endpoints.dart';
 import 'package:kasbli_merchant/core/widgets/loading_widget.dart';
 
 class CustomImageLoader extends StatelessWidget {
@@ -9,7 +9,7 @@ class CustomImageLoader extends StatelessWidget {
   final double? height;
   final BoxFit? fit;
   final bool isNetworkImage; // True for network, false for asset
-
+  final bool isImageFile;
   const CustomImageLoader({
     super.key,
     required this.imagePath,
@@ -17,13 +17,14 @@ class CustomImageLoader extends StatelessWidget {
     this.height,
     this.fit,
     this.isNetworkImage = true, // Default to network image
+    this.isImageFile = false,
   });
 
   @override
   Widget build(BuildContext context) {
     if (isNetworkImage) {
       return CachedNetworkImage(
-        imageUrl: ApiEndPoints.baseUrl + imagePath,
+        imageUrl: imagePath,
         width: width,
         height: height,
         fit: fit,
@@ -37,7 +38,17 @@ class CustomImageLoader extends StatelessWidget {
               child: Icon(Icons.broken_image_rounded),
             ),
       );
-    } else {
+    } 
+    if(isImageFile){
+      return Image.file(
+        File(imagePath),
+        width: width,
+        height: height,
+        fit: fit,
+      );
+    }
+    
+    else {
       // For asset images, ensure they are properly added to pubspec.yaml
       return Image.asset(
         imagePath,

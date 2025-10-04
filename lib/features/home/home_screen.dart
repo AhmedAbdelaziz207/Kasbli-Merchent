@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kasbli_merchant/core/routing/app_router.dart';
 import 'package:kasbli_merchant/core/theme/app_colors.dart';
 import 'widgets/home_header.dart';
 import 'widgets/stats_grid.dart';
@@ -31,7 +32,10 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              HomeHeader(name: userName, onAdd: () {}, onNotifications: () {}),
+              HomeHeader(name: userName, onAdd: () {
+              Navigator.pushNamed(context, AppRouter.addProduct);
+              
+              }, onNotifications: () {}),
               const SizedBox(height: 8),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.0.w),

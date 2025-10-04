@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kasbli_merchant/features/otp/logic/otp_cubit.dart';
+import 'package:kasbli_merchant/features/product/add_product_screen.dart';
+import 'package:kasbli_merchant/features/product/logic/products_cubit.dart';
 
 import '../../features/done/done_screen.dart';
 import '../../features/forgot_password/ui/create_new_password_screen.dart';
@@ -33,7 +35,7 @@ class AppRouter {
   static const home = '/home';
   static const otp = '/otp';
   static const done = '/done';
-  static const products = '/products';
+  static const addProduct = '/addProduct';
   static const landing = '/landing';
   static const cart = '/cart';
   static const productDetails = '/productDetails';
@@ -48,7 +50,6 @@ class AppRouter {
   static const classifications = "/classifications";
   static const forgotPassword = "/forgotPassword";
   static const createNewPassword = "/createNewPassword";
-  static const orderDetails = "/orderDetails";
   static const customerDetails = "/customerDetails";
 
   /// OnGenerateRoute => Navigation Handler
@@ -108,6 +109,14 @@ class AppRouter {
 
       case landing:
         return MaterialPageRoute(builder: (_) => LandingScreen());
+      case addProduct:
+        return MaterialPageRoute(
+          builder:
+              (_) => BlocProvider(
+                create: (context) => ProductsCubit(),
+                child: const AddProductScreen(),
+              ),
+        );
 
       default:
         return MaterialPageRoute(

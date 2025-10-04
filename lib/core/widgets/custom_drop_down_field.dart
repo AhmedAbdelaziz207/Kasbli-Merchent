@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../theme/app_colors.dart';
 
 class CustomDropdownField extends StatefulWidget {
@@ -9,7 +8,7 @@ class CustomDropdownField extends StatefulWidget {
   final Function(String?)? onSelected;
   final String? Function(String?)? validator;
   final String? initialValue;
-  // Optional: customize how each item is displayed (e.g., localization)
+  // Optional: Customize how each item is displayed (e.g., Localization)
   final String Function(String value)? displayBuilder;
 
   const CustomDropdownField({
@@ -53,55 +52,44 @@ class _CustomDropdownFieldState extends State<CustomDropdownField> {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 12.w),
-              decoration: BoxDecoration(
-                color: AppColors.white,
-                borderRadius: BorderRadius.circular(8.w),
-                border: Border.all(
-                  color: state.hasError ? Colors.red : AppColors.grey,
-                  width: 1.w,
+            DropdownButtonFormField<String>(
+              isExpanded: true,
+              value: _selectedValue,
+              hint: Text(
+                widget.hintText,
+                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                  color: AppColors.grey,
+                  fontSize: 12.sp,
                 ),
               ),
-              child: DropdownButtonHideUnderline(
-                child: DropdownButton<String>(
-                  isExpanded: true,
-                  value: _selectedValue,
-                  hint: Text(
-                    widget.hintText,
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyLarge
-                        ?.copyWith(color: AppColors.grey),
-                  ),
-                  icon: Icon(
-                    Icons.arrow_drop_down_outlined,
-                    size: 28.sp,
-                    color: AppColors.black,
-                  ),
-                  onChanged: (String? newValue) {
-                    setState(() {
-                      _selectedValue = newValue;
-                    });
-                    state.didChange(newValue); // important for validation
-                    widget.onSelected?.call(newValue);
-                  },
-                  items: widget.items
-                      .map<DropdownMenuItem<String>>((String value) {
+              icon: Icon(
+                Icons.arrow_drop_down_rounded,
+                size: 28.sp,
+                color: AppColors.primaryColor,
+              ),
+              onChanged: (String? newValue) {
+                setState(() {
+                  _selectedValue = newValue;
+                });
+                state.didChange(newValue); // important for validation
+                widget.onSelected?.call(newValue);
+              },
+              items:
+                  widget.items.map<DropdownMenuItem<String>>((String value) {
                     return DropdownMenuItem<String>(
                       value: value,
+
                       child: Text(
                         widget.displayBuilder?.call(value) ?? value,
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyLarge
-                            ?.copyWith(color: AppColors.secondaryColor),
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                          color: AppColors.secondaryColor,
+                          fontSize: 12.sp,
+                        ),
                       ),
                     );
                   }).toList(),
-                ),
-              ),
             ),
+
             if (state.hasError)
               Padding(
                 padding: EdgeInsets.only(top: 4.h, left: 4.w),
