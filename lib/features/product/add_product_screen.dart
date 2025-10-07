@@ -1,12 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kasbli_merchant/core/widgets/app_bar_widget.dart';
 import 'package:kasbli_merchant/core/widgets/primary_button.dart';
 import 'package:kasbli_merchant/features/product/widgets/add_product_form_section.dart';
 import 'package:kasbli_merchant/features/product/widgets/add_product_media_section.dart';
+import 'package:kasbli_merchant/features/categories/logic/categories_cubit.dart';
 
-class AddProductScreen extends StatelessWidget {
+class AddProductScreen extends StatefulWidget {
   const AddProductScreen({super.key});
+
+  @override
+  State<AddProductScreen> createState() => _AddProductScreenState();
+}
+
+class _AddProductScreenState extends State<AddProductScreen> {
+  @override
+  void initState() {
+    context.read<CategoriesCubit>().fetchCategories();
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

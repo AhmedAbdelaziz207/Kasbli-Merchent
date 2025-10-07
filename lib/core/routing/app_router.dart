@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kasbli_merchant/features/categories/logic/categories_cubit.dart';
 import 'package:kasbli_merchant/features/otp/logic/otp_cubit.dart';
 import 'package:kasbli_merchant/features/product/add_product_screen.dart';
 import 'package:kasbli_merchant/features/product/logic/products_cubit.dart';
@@ -112,8 +113,13 @@ class AppRouter {
       case addProduct:
         return MaterialPageRoute(
           builder:
-              (_) => BlocProvider(
-                create: (context) => ProductsCubit(),
+              (_) => MultiBlocProvider(
+                providers: [
+                  BlocProvider(create: (_) => ProductsCubit()),
+                  BlocProvider(
+                    create: (_) => CategoriesCubit(),
+                  ),
+                ],
                 child: const AddProductScreen(),
               ),
         );

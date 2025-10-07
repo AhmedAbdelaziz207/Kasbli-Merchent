@@ -15,6 +15,7 @@ class AddProductFormSection extends StatelessWidget {
         // Prduct Description
         CustomTextField(
           controller: TextEditingController(),
+          textInputAction: TextInputAction.next,
           labelText: 'Product Description',
           hintText: 'Type here',
           maxLines: 5,
@@ -29,7 +30,8 @@ class AddProductFormSection extends StatelessWidget {
             Expanded(
               child: CustomTextField(
                 controller: TextEditingController(),
-                labelText: 'Starting Price ',
+                textInputAction: TextInputAction.next,
+                    labelText: 'Starting Price ',
                 hintText: '00.00 \$',
                 keyboardType: TextInputType.number,
                 suffixIcon: const Icon(
@@ -43,6 +45,7 @@ class AddProductFormSection extends StatelessWidget {
             Expanded(
               child: CustomTextField(
                 controller: TextEditingController(),
+                textInputAction: TextInputAction.next,
                 labelText: 'Final Price',
                 hintText: '00.00 \$',
                 keyboardType: TextInputType.number,
@@ -63,6 +66,7 @@ class AddProductFormSection extends StatelessWidget {
             Expanded(
               child: CustomTextField(
                 controller: TextEditingController(),
+                textInputAction: TextInputAction.next,
                 labelText: 'Discount Price ',
                 hintText: '00.00 \$',
                 keyboardType: TextInputType.number,
@@ -77,6 +81,7 @@ class AddProductFormSection extends StatelessWidget {
             Expanded(
               child: CustomTextField(
                 controller: TextEditingController(),
+                textInputAction: TextInputAction.next,
                 labelText: 'Quantity',
                 hintText: '0',
                 keyboardType: TextInputType.number,
@@ -92,7 +97,7 @@ class AddProductFormSection extends StatelessWidget {
 
         // Prduct Category And Sub Category Drop Down
         ProductAndSubDropdown(),
-        SizedBox(height: 16.h),
+        SizedBox(height: 21.h),
 
         // Product Variations
         ProductVariations(),

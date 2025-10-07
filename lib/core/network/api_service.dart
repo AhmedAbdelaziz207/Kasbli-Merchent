@@ -70,62 +70,6 @@ abstract class ApiService {
     @Query("with_offer") bool? withOffer,
   });
 
-  @GET(ApiEndPoints.productBySection)
-  Future<ProductsResponse> getProductsBySection({
-    @Query("section_id") int? sectionId,
-    @Query("page") int page = 1,
-    @Query("min_price") int? minPrice,
-    @Query("max_price") int? maxPrice,
-
-    /// name || total_quantity || created_at  || wholesale
-    @Query("sort_field") String? sortField,
-
-    /// asc || desc
-    @Query("sort_direction") int? sortDirection,
-    @Query("with_offer") bool? withOffer,
-  });
-
-  @GET(ApiEndPoints.productsByCategory)
-  Future<ProductsResponse> getProductsByCategory({
-    @Query("category_id") int? categoryId,
-    @Query("page") int page = 1,
-    @Query("min_price") int? minPrice,
-    @Query("max_price") int? maxPrice,
-
-    /// name || total_quantity || created_at  || wholesale
-    @Query("sort_field") String? sortField,
-
-    /// asc || desc
-    @Query("sort_direction") int? sortDirection,
-    @Query("with_offer") bool? withOffer,
-  });
-
-  @GET(ApiEndPoints.productsBySubCategory)
-  Future<ProductsResponse> getProductsBySubCategory({
-    @Query("sub_category_id") int? subCategoryId,
-    @Query("page") int page = 1,
-    @Query("min_price") int? minPrice,
-    @Query("max_price") int? maxPrice,
-
-    /// name || total_quantity || created_at  || wholesale
-    @Query("sort_field") String? sortField,
-
-    /// asc || desc
-    @Query("sort_direction") int? sortDirection,
-    @Query("with_offer") bool? withOffer,
-  });
-
-  @GET(ApiEndPoints.productDetails)
-  Future<ProductDetailsResponse> getProductDetails(@Query("product_id") int id);
-
-  @POST(ApiEndPoints.addToFavorites)
-  Future<void> addToFavorites(@Body() Map<String, dynamic> data);
-
-  @GET(ApiEndPoints.getFavorites)
-  Future<ProductsResponse> getFavorites();
-
-  @GET(ApiEndPoints.cart)
-  Future<CartResponse> getCart();
 
   @GET(ApiEndPoints.paymentHistory)
   Future<PaymentHistoryResponse> getPaymentHistory();
@@ -159,23 +103,6 @@ abstract class ApiService {
   @GET(ApiEndPoints.getNotificationsCount)
   Future<NotificationsCountResponse> getNotificationsCount();
 
-  @GET(ApiEndPoints.getCartCount)
-  Future<NotificationsCountResponse> getCartCount();
-
-  /// Body ex -> {"product_id": 1, "quantity": 1, "product_variation_id"}
-  @POST(ApiEndPoints.addToCart)
-  Future<void> addToCart(@Body() Map<String, dynamic> data);
-
-  @POST(ApiEndPoints.removeAllCart)
-  Future<void> removeAllCart();
-
-  /// Body ex -> {"product_id": 1, "quantity": 1, "product_variation_id"}
-  @POST(ApiEndPoints.updateCart)
-  Future<void> updateCart(@Body() FormData data);
-
-  /// Body ex -> {"shipping_cost": 1, "shipping_paid_by_trader": 1, "coupon_code" : "3C33", "items" : "[{"product_id": 1, "quantity": 1, "product_variation_id"}]"}
-  @POST(ApiEndPoints.calculateCustomerPrice)
-  Future<CartCalculationResponse> calculateCustomerPrice(@Body() FormData data);
 
   @GET(ApiEndPoints.pendingOrders)
   Future<OrderResponse> getPendingOrders();
@@ -192,30 +119,6 @@ abstract class ApiService {
   @GET(ApiEndPoints.orderDetail)
   Future<OrderDetailResponse> getOrderDetails(@Query("order_id") int orderId);
 
-  /// Return/cancel an order by ID
-  @POST(ApiEndPoints.returnOrder)
-  Future<void> returnOrder(@Body() FormData orderId);
-
-  // Customers
-  @GET(ApiEndPoints.getCustomers)
-  Future<CustomersDetailsResponse> getCustomers();
-
-  @POST(ApiEndPoints.deleteCustomer)
-  Future<void> deleteCustomer(@Body() FormData data);
-
-  @POST(ApiEndPoints.updateCustomer)
-  Future<void> updateCustomer(@Body() FormData data);
-
-  @POST(ApiEndPoints.addCustomer)
-  Future<void> addCustomer(@Body() FormData data);
-
-  @GET(ApiEndPoints.getShippingPlaces)
-  Future<ShippingPlacesResponse> getShippingPlaces();
-
-  @POST(ApiEndPoints.requestOrder)
-  Future<RequestOrderResponse> requestOrder(@Body() FormData data);
-
-  @GET(ApiEndPoints.search)
-  Future<SearchResponse> search(@Query("search") String search);
+  
 }
 

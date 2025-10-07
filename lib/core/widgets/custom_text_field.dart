@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../theme/app_colors.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -29,7 +28,7 @@ class CustomTextField extends StatelessWidget {
   final bool constrainHeight;
   final double? height;
   final List<String>? autofillHints;
-
+final TextInputAction? textInputAction;
   const CustomTextField({
     super.key,
     required this.controller,
@@ -56,6 +55,7 @@ class CustomTextField extends StatelessWidget {
     this.constrainHeight = false,
     this.height = 60,
     this.autofillHints,
+    this.textInputAction,
   });
 
   @override
@@ -90,6 +90,7 @@ class CustomTextField extends StatelessWidget {
             onFieldSubmitted: onSubmitted,
             onTap: onTap,
             readOnly: readOnly,
+            textInputAction: textInputAction,
             enabled: enabled,
             maxLines: maxLines,
             minLines: minLines,
@@ -101,6 +102,7 @@ class CustomTextField extends StatelessWidget {
             style: TextStyle(fontSize: 11.sp),
             decoration: InputDecoration(
               hintText: hintText,
+        
               hintStyle: const TextStyle(
                 color: Colors.grey, // Adjust if needed
                 fontSize: 12.0,

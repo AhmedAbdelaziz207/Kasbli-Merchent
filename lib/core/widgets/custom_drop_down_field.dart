@@ -3,11 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../theme/app_colors.dart';
 
 class CustomDropdownField extends StatefulWidget {
+
   final String hintText;
   final List<String> items;
   final Function(String?)? onSelected;
   final String? Function(String?)? validator;
   final String? initialValue;
+  final String? value;
   // Optional: Customize how each item is displayed (e.g., Localization)
   final String Function(String value)? displayBuilder;
 
@@ -18,6 +20,7 @@ class CustomDropdownField extends StatefulWidget {
     this.onSelected,
     this.validator,
     this.initialValue,
+    this.value,
     this.displayBuilder,
   });
 
@@ -26,12 +29,10 @@ class CustomDropdownField extends StatefulWidget {
 }
 
 class _CustomDropdownFieldState extends State<CustomDropdownField> {
-  String? _selectedValue;
 
   @override
   void initState() {
     super.initState();
-    _selectedValue = widget.initialValue;
   }
 
   @override
@@ -39,7 +40,6 @@ class _CustomDropdownFieldState extends State<CustomDropdownField> {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.initialValue != widget.initialValue) {
       setState(() {
-        _selectedValue = widget.initialValue;
       });
     }
   }
@@ -54,7 +54,7 @@ class _CustomDropdownFieldState extends State<CustomDropdownField> {
           children: [
             DropdownButtonFormField<String>(
               isExpanded: true,
-              value: _selectedValue,
+              value: widget.value,
               hint: Text(
                 widget.hintText,
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
@@ -69,7 +69,6 @@ class _CustomDropdownFieldState extends State<CustomDropdownField> {
               ),
               onChanged: (String? newValue) {
                 setState(() {
-                  _selectedValue = newValue;
                 });
                 state.didChange(newValue); // important for validation
                 widget.onSelected?.call(newValue);

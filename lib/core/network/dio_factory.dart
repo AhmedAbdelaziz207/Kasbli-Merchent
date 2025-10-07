@@ -48,6 +48,7 @@ log("Add dio headers $language");
       'Accept': 'application/json',
       'local':  language,
       'Accept-Language': language,
+      'Authorization': 'Bearer 96|UPsSvcfS7IL1fH6TcZutMl3fmaRn3pLnVsalKxmX424dfa0e',
     };
     if (token != null && token.isNotEmpty) {
       headers['Authorization'] = 'Bearer $token';
